@@ -1,0 +1,1274 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for node-npmtest-backbone.radio/node_modules/backbone.radio/build/backbone.radio.js</title>
+    <meta charset="utf-8">
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            height: 160px;
+            padding: 0 1em 0 1em;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 170px;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { color: #000; }
+        div.coverage-summary a:visited { color: #333; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1 style="font-weight: bold;">
+        <a href="https://github.com/npmtest/node-npmtest-backbone.radio">npmtest-backbone.radio (v0.0.1)</a>
+    </h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-backbone.radio/node_modules/backbone.radio/build/backbone.radio.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">23.94% <small>(34 / 142)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">7.55% <small>(8 / 106)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">13.33% <small>(4 / 30)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">23.94% <small>(34 / 142)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-backbone.radio/node_modules/backbone.radio/build/</a> &#187; backbone.radio.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// Backbone.Radio v2.0.0
+&nbsp;
+(function (global, factory) {
+  typeof exports === 'object' &amp;&amp; typeof module !== 'undefined' ? module.exports = factory(require('underscore'), require('backbone')) :
+<span class="branch-1 cbranch-no" title="branch not covered" >  typeof define === 'function' &amp;&amp; define.amd ? define(['underscore', 'backbone'], factory) :</span>
+  (global.Backbone = global.Backbone || {}, global.Backbone.Radio = factory(global._,global.Backbone));
+}(this, function (_,Backbone) { 'use strict';
+&nbsp;
+  _ = 'default' in _ ? <span class="branch-0 cbranch-no" title="branch not covered" >_['default'] </span>: _;
+  Backbone = 'default' in Backbone ? <span class="branch-0 cbranch-no" title="branch not covered" >Backbone['default'] </span>: Backbone;
+&nbsp;
+  var _typeof = typeof Symbol === "function" &amp;&amp; typeof Symbol.iterator === "symbol" ? <span class="fstat-no" title="function not covered" >function (obj) {</span>
+<span class="cstat-no" title="statement not covered" >    return typeof obj;</span>
+  } : <span class="fstat-no" title="function not covered" ><span class="branch-1 cbranch-no" title="branch not covered" >function (obj) {</span></span>
+<span class="cstat-no" title="statement not covered" >    return obj &amp;&amp; typeof Symbol === "function" &amp;&amp; obj.constructor === Symbol ? "symbol" : typeof obj;</span>
+  };
+&nbsp;
+  var previousRadio = Backbone.Radio;
+&nbsp;
+  var Radio = Backbone.Radio = {};
+&nbsp;
+  Radio.VERSION = '2.0.0';
+&nbsp;
+  // This allows you to run multiple instances of Radio on the same
+  // webapp. After loading the new version, call `noConflict()` to
+  // get a reference to it. At the same time the old version will be
+  // returned to Backbone.Radio.
+  Radio.noConflict = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >    Backbone.Radio = previousRadio;</span>
+<span class="cstat-no" title="statement not covered" >    return this;</span>
+  };
+&nbsp;
+  // Whether or not we're in DEBUG mode or not. DEBUG mode helps you
+  // get around the issues of lack of warnings when events are mis-typed.
+  Radio.DEBUG = false;
+&nbsp;
+  // Format debug text.
+  Radio._debugText = <span class="fstat-no" title="function not covered" >function (warning, eventName, channelName) {</span>
+<span class="cstat-no" title="statement not covered" >    return warning + (channelName ? ' on the ' + channelName + ' channel' : '') + ': "' + eventName + '"';</span>
+  };
+&nbsp;
+  // This is the method that's called when an unregistered event was called.
+  // By default, it logs warning to the console. By overriding this you could
+  // make it throw an Error, for instance. This would make firing a nonexistent event
+  // have the same consequence as firing a nonexistent method on an Object.
+  Radio.debugLog = <span class="fstat-no" title="function not covered" >function (warning, eventName, channelName) {</span>
+<span class="cstat-no" title="statement not covered" >    if (Radio.DEBUG &amp;&amp; console &amp;&amp; console.warn) {</span>
+<span class="cstat-no" title="statement not covered" >      console.warn(Radio._debugText(warning, eventName, channelName));</span>
+    }
+  };
+&nbsp;
+  var eventSplitter = /\s+/;
+&nbsp;
+  // An internal method used to handle Radio's method overloading for Requests.
+  // It's borrowed from Backbone.Events. It differs from Backbone's overload
+  // API (which is used in Backbone.Events) in that it doesn't support space-separated
+  // event names.
+  Radio._eventsApi = <span class="fstat-no" title="function not covered" >function (obj, action, name, rest) {</span>
+<span class="cstat-no" title="statement not covered" >    if (!name) {</span>
+<span class="cstat-no" title="statement not covered" >      return false;</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    var results = {};</span>
+&nbsp;
+    // Handle event maps.
+<span class="cstat-no" title="statement not covered" >    if ((typeof name === 'undefined' ? 'undefined' : _typeof(name)) === 'object') {</span>
+<span class="cstat-no" title="statement not covered" >      for (var key in name) {</span>
+<span class="cstat-no" title="statement not covered" >        var result = obj[action].apply(obj, [key, name[key]].concat(rest));</span>
+<span class="cstat-no" title="statement not covered" >        eventSplitter.test(key) ? _.extend(results, result) : results[key] = result;</span>
+      }
+<span class="cstat-no" title="statement not covered" >      return results;</span>
+    }
+&nbsp;
+    // Handle space separated event names.
+<span class="cstat-no" title="statement not covered" >    if (eventSplitter.test(name)) {</span>
+<span class="cstat-no" title="statement not covered" >      var names = name.split(eventSplitter);</span>
+<span class="cstat-no" title="statement not covered" >      for (var i = 0, l = names.length; i &lt; l; i++) {</span>
+<span class="cstat-no" title="statement not covered" >        results[names[i]] = obj[action].apply(obj, [names[i]].concat(rest));</span>
+      }
+<span class="cstat-no" title="statement not covered" >      return results;</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return false;</span>
+  };
+&nbsp;
+  // An optimized way to execute callbacks.
+  Radio._callHandler = <span class="fstat-no" title="function not covered" >function (callback, context, args) {</span>
+<span class="cstat-no" title="statement not covered" >    var a1 = args[0],</span>
+        a2 = args[1],
+        a3 = args[2];
+<span class="cstat-no" title="statement not covered" >    switch (args.length) {</span>
+      case 0:
+<span class="cstat-no" title="statement not covered" >        return callback.call(context);</span>
+      case 1:
+<span class="cstat-no" title="statement not covered" >        return callback.call(context, a1);</span>
+      case 2:
+<span class="cstat-no" title="statement not covered" >        return callback.call(context, a1, a2);</span>
+      case 3:
+<span class="cstat-no" title="statement not covered" >        return callback.call(context, a1, a2, a3);</span>
+      default:
+<span class="cstat-no" title="statement not covered" >        return callback.apply(context, args);</span>
+    }
+  };
+&nbsp;
+  // A helper used by `off` methods to the handler from the store
+<span class="fstat-no" title="function not covered" >  function removeHandler(store, name, callback, context) {</span>
+<span class="cstat-no" title="statement not covered" >    var event = store[name];</span>
+<span class="cstat-no" title="statement not covered" >    if ((!callback || callback === event.callback || callback === event.callback._callback) &amp;&amp; (!context || context === event.context)) {</span>
+<span class="cstat-no" title="statement not covered" >      delete store[name];</span>
+<span class="cstat-no" title="statement not covered" >      return true;</span>
+    }
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function removeHandlers(store, name, callback, context) {</span>
+<span class="cstat-no" title="statement not covered" >    store || (store = {});</span>
+<span class="cstat-no" title="statement not covered" >    var names = name ? [name] : _.keys(store);</span>
+<span class="cstat-no" title="statement not covered" >    var matched = false;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    for (var i = 0, length = names.length; i &lt; length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >      name = names[i];</span>
+&nbsp;
+      // If there's no event by this name, log it and continue
+      // with the loop
+<span class="cstat-no" title="statement not covered" >      if (!store[name]) {</span>
+<span class="cstat-no" title="statement not covered" >        continue;</span>
+      }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      if (removeHandler(store, name, callback, context)) {</span>
+<span class="cstat-no" title="statement not covered" >        matched = true;</span>
+      }
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return matched;</span>
+  }
+&nbsp;
+  /*
+   * tune-in
+   * -------
+   * Get console logs of a channel's activity
+   *
+   */
+&nbsp;
+  var _logs = {};
+&nbsp;
+  // This is to produce an identical function in both tuneIn and tuneOut,
+  // so that Backbone.Events unregisters it.
+<span class="fstat-no" title="function not covered" >  function _partial(channelName) {</span>
+<span class="cstat-no" title="statement not covered" >    return _logs[channelName] || (_logs[channelName] = _.bind(Radio.log, Radio, channelName));</span>
+  }
+&nbsp;
+  _.extend(Radio, {
+&nbsp;
+    // Log information about the channel and event
+    log: <span class="fstat-no" title="function not covered" >function log(channelName, eventName) {</span>
+<span class="cstat-no" title="statement not covered" >      if (typeof console === 'undefined') {</span>
+<span class="cstat-no" title="statement not covered" >        return;</span>
+      }
+<span class="cstat-no" title="statement not covered" >      var args = _.toArray(arguments).slice(2);</span>
+<span class="cstat-no" title="statement not covered" >      console.log('[' + channelName + '] "' + eventName + '"', args);</span>
+    },
+&nbsp;
+    // Logs all events on this channel to the console. It sets an
+    // internal value on the channel telling it we're listening,
+    // then sets a listener on the Backbone.Events
+    tuneIn: <span class="fstat-no" title="function not covered" >function tuneIn(channelName) {</span>
+<span class="cstat-no" title="statement not covered" >      var channel = Radio.channel(channelName);</span>
+<span class="cstat-no" title="statement not covered" >      channel._tunedIn = true;</span>
+<span class="cstat-no" title="statement not covered" >      channel.on('all', _partial(channelName));</span>
+<span class="cstat-no" title="statement not covered" >      return this;</span>
+    },
+&nbsp;
+    // Stop logging all of the activities on this channel to the console
+    tuneOut: <span class="fstat-no" title="function not covered" >function tuneOut(channelName) {</span>
+<span class="cstat-no" title="statement not covered" >      var channel = Radio.channel(channelName);</span>
+<span class="cstat-no" title="statement not covered" >      channel._tunedIn = false;</span>
+<span class="cstat-no" title="statement not covered" >      channel.off('all', _partial(channelName));</span>
+<span class="cstat-no" title="statement not covered" >      delete _logs[channelName];</span>
+<span class="cstat-no" title="statement not covered" >      return this;</span>
+    }
+  });
+&nbsp;
+  /*
+   * Backbone.Radio.Requests
+   * -----------------------
+   * A messaging system for requesting data.
+   *
+   */
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function makeCallback(callback) {</span>
+<span class="cstat-no" title="statement not covered" >    return _.isFunction(callback) ? callback : <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >      return callback;</span>
+    };
+  }
+&nbsp;
+  Radio.Requests = {
+&nbsp;
+    // Make a request
+    request: <span class="fstat-no" title="function not covered" >function request(name) {</span>
+<span class="cstat-no" title="statement not covered" >      var args = _.toArray(arguments).slice(1);</span>
+<span class="cstat-no" title="statement not covered" >      var results = Radio._eventsApi(this, 'request', name, args);</span>
+<span class="cstat-no" title="statement not covered" >      if (results) {</span>
+<span class="cstat-no" title="statement not covered" >        return results;</span>
+      }
+<span class="cstat-no" title="statement not covered" >      var channelName = this.channelName;</span>
+<span class="cstat-no" title="statement not covered" >      var requests = this._requests;</span>
+&nbsp;
+      // Check if we should log the request, and if so, do it
+<span class="cstat-no" title="statement not covered" >      if (channelName &amp;&amp; this._tunedIn) {</span>
+<span class="cstat-no" title="statement not covered" >        Radio.log.apply(this, [channelName, name].concat(args));</span>
+      }
+&nbsp;
+      // If the request isn't handled, log it in DEBUG mode and exit
+<span class="cstat-no" title="statement not covered" >      if (requests &amp;&amp; (requests[name] || requests['default'])) {</span>
+<span class="cstat-no" title="statement not covered" >        var handler = requests[name] || requests['default'];</span>
+<span class="cstat-no" title="statement not covered" >        args = requests[name] ? args : arguments;</span>
+<span class="cstat-no" title="statement not covered" >        return Radio._callHandler(handler.callback, handler.context, args);</span>
+      } else {
+<span class="cstat-no" title="statement not covered" >        Radio.debugLog('An unhandled request was fired', name, channelName);</span>
+      }
+    },
+&nbsp;
+    // Set up a handler for a request
+    reply: <span class="fstat-no" title="function not covered" >function reply(name, callback, context) {</span>
+<span class="cstat-no" title="statement not covered" >      if (Radio._eventsApi(this, 'reply', name, [callback, context])) {</span>
+<span class="cstat-no" title="statement not covered" >        return this;</span>
+      }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      this._requests || (this._requests = {});</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      if (this._requests[name]) {</span>
+<span class="cstat-no" title="statement not covered" >        Radio.debugLog('A request was overwritten', name, this.channelName);</span>
+      }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      this._requests[name] = {</span>
+        callback: makeCallback(callback),
+        context: context || this
+      };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      return this;</span>
+    },
+&nbsp;
+    // Set up a handler that can only be requested once
+    replyOnce: <span class="fstat-no" title="function not covered" >function replyOnce(name, callback, context) {</span>
+<span class="cstat-no" title="statement not covered" >      if (Radio._eventsApi(this, 'replyOnce', name, [callback, context])) {</span>
+<span class="cstat-no" title="statement not covered" >        return this;</span>
+      }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      var self = this;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      var once = _.once(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >        self.stopReplying(name);</span>
+<span class="cstat-no" title="statement not covered" >        return makeCallback(callback).apply(this, arguments);</span>
+      });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      return this.reply(name, once, context);</span>
+    },
+&nbsp;
+    // Remove handler(s)
+    stopReplying: <span class="fstat-no" title="function not covered" >function stopReplying(name, callback, context) {</span>
+<span class="cstat-no" title="statement not covered" >      if (Radio._eventsApi(this, 'stopReplying', name)) {</span>
+<span class="cstat-no" title="statement not covered" >        return this;</span>
+      }
+&nbsp;
+      // Remove everything if there are no arguments passed
+<span class="cstat-no" title="statement not covered" >      if (!name &amp;&amp; !callback &amp;&amp; !context) {</span>
+<span class="cstat-no" title="statement not covered" >        delete this._requests;</span>
+      } else <span class="cstat-no" title="statement not covered" >if (!removeHandlers(this._requests, name, callback, context)) {</span>
+<span class="cstat-no" title="statement not covered" >        Radio.debugLog('Attempted to remove the unregistered request', name, this.channelName);</span>
+      }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      return this;</span>
+    }
+  };
+&nbsp;
+  /*
+   * Backbone.Radio.channel
+   * ----------------------
+   * Get a reference to a channel by name.
+   *
+   */
+&nbsp;
+  Radio._channels = {};
+&nbsp;
+  Radio.channel = <span class="fstat-no" title="function not covered" >function (channelName) {</span>
+<span class="cstat-no" title="statement not covered" >    if (!channelName) {</span>
+<span class="cstat-no" title="statement not covered" >      throw new Error('You must provide a name for the channel.');</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (Radio._channels[channelName]) {</span>
+<span class="cstat-no" title="statement not covered" >      return Radio._channels[channelName];</span>
+    } else {
+<span class="cstat-no" title="statement not covered" >      return Radio._channels[channelName] = new Radio.Channel(channelName);</span>
+    }
+  };
+&nbsp;
+  /*
+   * Backbone.Radio.Channel
+   * ----------------------
+   * A Channel is an object that extends from Backbone.Events,
+   * and Radio.Requests.
+   *
+   */
+&nbsp;
+  Radio.Channel = <span class="fstat-no" title="function not covered" >function (channelName) {</span>
+<span class="cstat-no" title="statement not covered" >    this.channelName = channelName;</span>
+  };
+&nbsp;
+  _.extend(Radio.Channel.prototype, Backbone.Events, Radio.Requests, {
+&nbsp;
+    // Remove all handlers from the messaging systems of this channel
+    reset: <span class="fstat-no" title="function not covered" >function reset() {</span>
+<span class="cstat-no" title="statement not covered" >      this.off();</span>
+<span class="cstat-no" title="statement not covered" >      this.stopListening();</span>
+<span class="cstat-no" title="statement not covered" >      this.stopReplying();</span>
+<span class="cstat-no" title="statement not covered" >      return this;</span>
+    }
+  });
+&nbsp;
+  /*
+   * Top-level API
+   * -------------
+   * Supplies the 'top-level API' for working with Channels directly
+   * from Backbone.Radio.
+   *
+   */
+&nbsp;
+  var channel;
+  var args;
+  var systems = [Backbone.Events, Radio.Requests];
+  _.each(systems, function (system) {
+    _.each(system, function (method, methodName) {
+      Radio[methodName] = <span class="fstat-no" title="function not covered" >function (channelName) {</span>
+<span class="cstat-no" title="statement not covered" >        args = _.toArray(arguments).slice(1);</span>
+<span class="cstat-no" title="statement not covered" >        channel = this.channel(channelName);</span>
+<span class="cstat-no" title="statement not covered" >        return channel[methodName].apply(channel, args);</span>
+      };
+    });
+  });
+&nbsp;
+  Radio.reset = <span class="fstat-no" title="function not covered" >function (channelName) {</span>
+<span class="cstat-no" title="statement not covered" >    var channels = !channelName ? this._channels : [this._channels[channelName]];</span>
+<span class="cstat-no" title="statement not covered" >    _.each(channels, <span class="fstat-no" title="function not covered" >function (channel) {</span></span>
+<span class="cstat-no" title="statement not covered" >      channel.reset();</span>
+    });
+  };
+&nbsp;
+  return Radio;
+&nbsp;
+}));
+//# sourceMappingURL=./backbone.radio.js.map
+&nbsp;</pre></td></tr>
+</table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Thu Apr 20 2017 17:51:49 GMT+0000 (UTC)</div>
+</div>
+</body>
+</html>
